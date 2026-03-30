@@ -43,6 +43,9 @@ def run_copy_move(image_path):
 
         unique_clusters = len(set(labels)) - (1 if -1 in labels else 0)
 
+        # ✅ FIX: convert to int
+        unique_clusters = int(unique_clusters)
+
         if unique_clusters > 5:
             result = "Forgery Detected"
         else:
@@ -50,7 +53,7 @@ def run_copy_move(image_path):
 
         return {
             "result": result,
-            "clusters": int(unique_clusters)
+            "clusters": unique_clusters
         }
 
     except Exception as e:
